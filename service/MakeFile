@@ -1,5 +1,0 @@
-############################# Makefile ##########################
-build:
-	go build ./service/server.go -o "gateway.o"
-run:
-	./gateway.o
