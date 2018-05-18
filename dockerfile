@@ -1,12 +1,11 @@
 FROM golang:1.10
 
-WORKDIR /gateway
-
+WORKDIR /home/gateway
 # TODO: discover why this work and I dont need cd service
-ADD service/ /gateway
+ADD service/ /home/gateway
 
 RUN make build
 
 EXPOSE 80
 
-CMD ["./deploy/gateway.o", "'v1'"]
+ENTRYPOINT ["./deploy/gateway.o", "v1"]
