@@ -8,4 +8,4 @@ RUN make build
 
 EXPOSE 80
 
-ENTRYPOINT ["./deploy/gateway.o", "v1"]
+ENTRYPOINT ["./deploy/gateway.o", ":80"]

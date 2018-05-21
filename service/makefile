@@ -8,4 +8,4 @@ build:
 	@go build -o "deploy/gateway.o" .
 run:
 	@make build
-	@./release/gateway.o config.json
+	@./release/gateway.o :80
