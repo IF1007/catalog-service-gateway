@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"../constants/"
+	"../constants"
 )
 
 type log struct {

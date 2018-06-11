@@ -4,6 +4,7 @@ clean:
 build:
 	@go get -v -u github.com/gorilla/mux
 	@go get -v -u github.com/globalsign/mgo
+	@go get -v -u github.com/satori/go.uuid
 	@make clean
 	@mkdir deploy
 	@go build -o "deploy/gateway.o" .

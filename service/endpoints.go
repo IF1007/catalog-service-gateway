@@ -4,11 +4,11 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"./auth/"
-	"./constants/"
-	"./db/"
-	"./dns/"
-	"./log/"
+	"./auth"
+	"./constants"
+	"./db"
+	"./dns"
+	"./log"
 )
 
 func redirect(resp http.ResponseWriter, req *http.Request) {

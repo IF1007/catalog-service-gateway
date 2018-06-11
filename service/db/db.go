@@ -6,8 +6,8 @@ import (
 	"github.com/globalsign/mgo"
 	"github.com/globalsign/mgo/bson"
 
-	"../constants/"
-	"../log/"
+	"../constants"
+	"../log"
 	"github.com/satori/go.uuid"
 )
 

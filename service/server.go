@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"os"
 
-	"./constants/"
-	"./db/"
-	"./log/"
+	"./constants"
+	"./db"
+	"./log"
 
 	"github.com/gorilla/mux"
 )

@@ -3,7 +3,7 @@ package dns
 import (
 	"strings"
 
-	"../constants/"
+	"../constants"
 )
 
 type SystemRoute struct {
