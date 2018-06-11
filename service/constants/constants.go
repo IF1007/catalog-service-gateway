@@ -1,7 +1,8 @@
 package constants
 
 // HOSTS
-const MongoDBHost = "localhost"
+const MongoDBHost = "csd-crud-db"
+const LogHost = "csd-elk:5000"
 const DefaultServerPort = ":80"
 const DefaultTimeout = 10000
 
@@ -29,3 +30,4 @@ const ErrorInvalidToken = "Invalid Token"
 const ErrorTryingConnectDB = "Error connecting with DB"
 const ErrorRegisterNewUser = "Error when try register new User"
 const ErrorLogin = "Error when trying login"
+const ErrorSenddingLog = "Cannot send log to server"
