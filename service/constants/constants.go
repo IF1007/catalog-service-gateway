@@ -1,10 +1,12 @@
 package constants
 
 // HOSTS
-const MongoDBHost = "localhost"
-const LogHost = "http://csd-elk:5000"
 const DefaultServerPort = ":80"
 const DefaultTimeout = 10000
+
+// TODO: Get by System Var
+const MongoDBHost = "csd-gateway-db"
+const LogHost = "http://csd-elk:5000"
 
 // ROUTES
 const PathLogin = "/login"
