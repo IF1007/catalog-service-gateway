@@ -1,8 +1,8 @@
 package constants
 
 // HOSTS
-const MongoDBHost = "csd-crud-db"
-const LogHost = "csd-elk:5000"
+const MongoDBHost = "localhost"
+const LogHost = "http://csd-elk:5000"
 const DefaultServerPort = ":80"
 const DefaultTimeout = 10000
 

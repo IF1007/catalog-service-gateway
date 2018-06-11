@@ -3,7 +3,7 @@ clean:
 	@rm -rf deploy/
 build:
 	@go get -v -u github.com/gorilla/mux
-	@go get -v -u go get gopkg.in/mgo.v2
+	@go get -v -u github.com/globalsign/mgo
 	@make clean
 	@mkdir deploy
 	@go build -o "deploy/gateway.o" .

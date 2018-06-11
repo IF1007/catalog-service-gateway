@@ -19,7 +19,8 @@ func redirect(resp http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	if !dns.IsRoutePublic(req.URL.Path) || auth.IsTokenValid(req.Header.Get(constants.AttrToken)) {
+	token := auth.GetToken(req.Header.Get(constants.AttrToken))
+	if !dns.IsRoutePublic(req.URL.Path) || token != "" {
 
 		redirectResp, err := makeClientRequests(req, reqURL)
 
@@ -44,8 +45,7 @@ func loginRequest(resp http.ResponseWriter, req *http.Request) {
 	var usrReq db.UserAuth
 	_ = json.NewDecoder(req.Body).Decode(&usrReq)
 
-	usr, err := db.GetUserByLoginPass(usrReq.Login, usrReq.Pass)
-
+	usr, err := db.GetUserByLoginPass(usrReq.Login, usrReq.Password)
 	if err != nil {
 		log.Log(constants.ErrorLogin + " - " + err.Error())
 		resp.WriteHeader(500)
