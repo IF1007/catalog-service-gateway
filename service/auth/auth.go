@@ -1,7 +1,7 @@
 package auth
 
 func GenerateToken(id string) string {
-	return "token"
+	return "token:value"
 }
 
 func IsTokenValid(token string) bool {
