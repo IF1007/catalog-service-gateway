@@ -6,14 +6,11 @@ import (
 
 	"./constants/"
 	"./db/"
-	"./discovery/"
 	"./log/"
 
 	"github.com/gorilla/mux"
 )
 
-// TODO: check all error
-// TODO: make a method log
 func main() {
 	argsProgram := os.Args[1:]
 
@@ -25,7 +22,7 @@ func main() {
 	router := mux.NewRouter()
 	router.HandleFunc(constants.PathLogin, loginRequest).Methods("POST")
 	router.HandleFunc(constants.PathRegister, registerRequest).Methods("POST")
-	discovery.StartDiscoveryService(router, redirect)
+	router.PathPrefix(constants.PathAPI).HandlerFunc(redirect)
 
 	db.Start()
 	log.Log(constants.MessageStartingServer + " - " + port)

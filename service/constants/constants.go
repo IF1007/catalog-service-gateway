@@ -9,6 +9,8 @@ const DefaultTimeout = 10000
 // ROUTES
 const PathLogin = "/login"
 const PathRegister = "/register"
+const PathAPI = "/api"
+const PathCrud = "/data"
 
 // MODELS
 const AttrUserLogin = "login"

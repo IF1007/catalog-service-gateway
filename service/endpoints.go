@@ -7,21 +7,19 @@ import (
 	"./auth/"
 	"./constants/"
 	"./db/"
-	"./discovery/"
+	"./dns/"
 	"./log/"
 )
 
 func redirect(resp http.ResponseWriter, req *http.Request) {
 
-	// TODO: Adjust get URL
-	reqURL := discovery.GetServiceURL(req)
-	// if reqURL != "" {
-	// 	resp.WriteHeader(404)
-	// 	resp.Write([]byte("Invalid path"))
-	// 	return
-	// }
+	reqURL := dns.GetServiceURL(req.URL.Path)
+	if reqURL == "" {
+		resp.WriteHeader(404)
+		return
+	}
 
-	if auth.IsTokenValid(req.Header.Get(constants.AttrToken)) {
+	if !dns.IsRoutePublic(req.URL.Path) || auth.IsTokenValid(req.Header.Get(constants.AttrToken)) {
 
 		redirectResp, err := makeClientRequests(req, reqURL)
 
