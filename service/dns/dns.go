@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"../constants"
+	"../log"
 )
 
 type SystemRoute struct {
@@ -34,8 +35,9 @@ func IsRoutePublic(path string) bool {
 func GetServiceURL(path string) string {
 	contextPath := strings.Split(path, constants.PathAPI)[1]
 	for _, route := range routes {
+		log.Log(path + " - " + route.PathPrefix)
 		if strings.Index(contextPath, route.PathPrefix) == 0 {
-			return route.PathPrefix + contextPath
+			return route.ServiceURL + contextPath
 		}
 	}
 
