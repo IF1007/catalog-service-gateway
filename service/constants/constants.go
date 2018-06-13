@@ -7,6 +7,7 @@ const DefaultTimeout = 10000
 // TODO: Get by System Var
 const MongoDBHost = "csd-gateway-db"
 const LogHost = "http://csd-elk:5000"
+const CrudHost = "http://csd-crud"
 
 // ROUTES
 const PathLogin = "/login"
@@ -26,6 +27,7 @@ const MessageNewUserCreate = "New User "
 const MessageNewUserLogin = "New login "
 const MessageTryConnectDB = "Trying connect with mongodb"
 const MessageConnectDBSuccess = "Connected with mongodb"
+const IsRequestingTo = " is requesting to "
 
 // ERRORS
 const ErrorLoginAlreadyExists = "Login already exist!"
@@ -35,3 +37,4 @@ const ErrorTryingConnectDB = "Error connecting with DB"
 const ErrorRegisterNewUser = "Error when try register new User"
 const ErrorLogin = "Error when trying login"
 const ErrorSenddingLog = "Cannot send log to server"
+const ErrorRequesting = "error on request "

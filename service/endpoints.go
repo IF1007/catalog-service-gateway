@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"io/ioutil"
 	"net/http"
 
 	"./auth"
@@ -19,19 +20,20 @@ func redirect(resp http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	token := auth.GetToken(req.Header.Get(constants.AttrToken))
+	tokenEncrypt := req.Header.Get(constants.AttrToken)
+	token := auth.GetToken(tokenEncrypt)
 	if !dns.IsRoutePublic(req.URL.Path) || token != "" {
 
+		log.Log(token + constants.IsRequestingTo + reqURL)
 		redirectResp, err := makeClientRequests(req, reqURL)
 
 		if err != nil {
+			log.Log(constants.ErrorRequesting + err.Error())
 			resp.WriteHeader(500)
 			return
 		}
 
-		var bytes []byte
-		redirectResp.Body.Read(bytes)
-
+		bytes, _ := ioutil.ReadAll(redirectResp.Body)
 		resp.WriteHeader(redirectResp.StatusCode)
 		resp.Write(bytes)
 	} else {
@@ -102,6 +104,7 @@ func registerRequest(resp http.ResponseWriter, req *http.Request) {
 // TODO: dont create a new client for every request
 func makeClientRequests(req *http.Request, url string) (*http.Response, error) {
 	redirectReq, _ := http.NewRequest(req.Method, url, req.Body)
-	client := &http.Client{Timeout: constants.DefaultTimeout}
+	// TODO: add some day a timeout
+	client := &http.Client{}
 	return client.Do(redirectReq)
 }
