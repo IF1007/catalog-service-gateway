@@ -6,8 +6,9 @@ import (
 )
 
 type token struct {
-	ID   string `json:"id,omitempty"`
-	Salt int    `json:"salt,omitempty"`
+	ID       string `json:"id,omitempty"`
+	Salt     int    `json:"salt,omitempty"`
+	LifeTime int    `json:"life,omitempty"`
 }
 
 const maxInt = int((^uint(0)) >> 1)
@@ -21,7 +22,7 @@ func GenerateToken(id string) string {
 	return string(jsonToken)
 }
 
-func GetToken(requestTokenStr string) string {
+func GetIdFromToken(requestTokenStr string) string {
 	// TODO: descrypt token
 	var requestToken *token
 	if err := json.Unmarshal([]byte(requestTokenStr), requestToken); err != nil {

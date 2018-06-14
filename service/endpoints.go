@@ -21,10 +21,11 @@ func redirect(resp http.ResponseWriter, req *http.Request) {
 	}
 
 	tokenEncrypt := req.Header.Get(constants.AttrToken)
-	token := auth.GetToken(tokenEncrypt)
-	if !dns.IsRoutePublic(req.URL.Path) || token != "" {
+	id := auth.GetIdFromToken(tokenEncrypt)
+	if !dns.IsRoutePublic(req.URL.Path) || id != "" {
 
-		log.Log(token + constants.IsRequestingTo + reqURL)
+		log.Log(id + constants.IsRequestingTo + reqURL)
+		req.Header.Set("ID", id)
 		redirectResp, err := makeClientRequests(req, reqURL)
 
 		if err != nil {
@@ -34,8 +35,13 @@ func redirect(resp http.ResponseWriter, req *http.Request) {
 		}
 
 		bytes, _ := ioutil.ReadAll(redirectResp.Body)
-		resp.WriteHeader(redirectResp.StatusCode)
-		resp.Write(bytes)
+		if redirectResp.StatusCode == 500 {
+			resp.WriteHeader(500)
+			log.Log(constants.ErrorCrud + string(bytes))
+		} else {
+			resp.WriteHeader(redirectResp.StatusCode)
+			resp.Write(bytes)
+		}
 	} else {
 		resp.WriteHeader(401)
 		resp.Write([]byte(constants.ErrorInvalidToken))
