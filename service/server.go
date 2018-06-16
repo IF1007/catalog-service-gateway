@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"os"
 
+	"./auth"
 	"./constants"
 	"./db"
 	"./log"
@@ -25,7 +26,10 @@ func main() {
 	router.PathPrefix(constants.PathAPI).HandlerFunc(redirect)
 
 	db.Start()
+	auth.CreateSecret()
+
 	log.Log(constants.MessageStartingServer + " - " + port)
+
 	if err := http.ListenAndServe(port, router); err != nil {
 		panic(err)
 	}

@@ -22,9 +22,9 @@ func redirect(resp http.ResponseWriter, req *http.Request) {
 
 	tokenEncrypt := req.Header.Get(constants.AttrToken)
 	id := auth.GetIdFromToken(tokenEncrypt)
-	if !dns.IsRoutePublic(req.URL.Path) || id != "" {
+	if !dns.IsRoutePublic(req.URL.Path) && id != "" {
 
-		log.Log(id + constants.IsRequestingTo + reqURL)
+		log.Log(id + constants.MessageIsRequestingTo + reqURL)
 		req.Header.Set("ID", id)
 		redirectResp, err := makeClientRequests(req, reqURL)
 
