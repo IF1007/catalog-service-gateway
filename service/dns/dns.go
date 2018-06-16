@@ -35,7 +35,7 @@ func GetServiceURL(path string) string {
 	contextPath := strings.Split(path, constants.PathAPI)[1]
 	for _, route := range routes {
 		if strings.Index(contextPath, route.PathPrefix) == 0 {
-			return route.ServiceURL + strings.Split(contextPath, route.PathPrefix)[1]
+			return route.ServiceURL + contextPath
 		}
 	}
 

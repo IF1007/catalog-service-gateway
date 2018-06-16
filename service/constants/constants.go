@@ -12,8 +12,8 @@ const CrudHost = "http://csd-crud"
 // ROUTES
 const PathLogin = "/login"
 const PathRegister = "/register"
-const PathAPI = "/api"
-const PathCrud = "/data"
+const PathAPI = "/csd"
+const PathCrud = "/api"
 
 // MODELS
 const AttrUserLogin = "login"
