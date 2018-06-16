@@ -1,6 +1,7 @@
 ############################# Makefile ##########################
 clean:
 	@rm -rf deploy/
+	@rm -rf secret.txt
 build:
 	@go get -v -u github.com/gorilla/mux
 	@go get -v -u github.com/globalsign/mgo

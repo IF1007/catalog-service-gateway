@@ -6,7 +6,7 @@ const DefaultTimeout = 10000
 
 // TODO: Get by System Var
 const MongoDBHost = "csd-gateway-db"
-const LogHost = "http://csd-elk:5000"
+const LogHost = "http://logstash:5000"
 const CrudHost = "http://csd-crud"
 
 // ROUTES
