@@ -1,6 +1,8 @@
 ############################# Makefile ##########################
 clean:
 	@rm -rf deploy/
+clean-all:
+	@make clean
 	@rm -rf secret.txt
 build:
 	@go get -v -u github.com/gorilla/mux

@@ -83,7 +83,7 @@ func CreateSecret() {
 		if err != nil {
 
 			rndBytes := make([]byte, constants.SecretSize)
-			keyBytes = nil
+			keyBytes = make([]byte, hex.EncodedLen(constants.SecretSize))
 
 			_, err := rand.Read(rndBytes)
 
