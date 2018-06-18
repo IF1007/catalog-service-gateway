@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
@@ -109,7 +110,8 @@ func registerRequest(resp http.ResponseWriter, req *http.Request) {
 
 // TODO: dont create a new client for every request
 func makeClientRequests(req *http.Request, url string) (*http.Response, error) {
-	redirectReq, _ := http.NewRequest(req.Method, url, req.Body)
+	bytesReq, _ := ioutil.ReadAll(req.Body)
+	redirectReq, _ := http.NewRequest(req.Method, url, bytes.NewReader(bytesReq))
 	// TODO: add some day a timeout
 	client := &http.Client{}
 	return client.Do(redirectReq)
