@@ -111,7 +111,11 @@ func registerRequest(resp http.ResponseWriter, req *http.Request) {
 // TODO: dont create a new client for every request
 func makeClientRequests(req *http.Request, url string) (*http.Response, error) {
 	bytesReq, _ := ioutil.ReadAll(req.Body)
-	redirectReq, _ := http.NewRequest(req.Method, url, bytes.NewReader(bytesReq))
+	reader := bytes.NewBuffer(bytesReq)
+
+	redirectReq, _ := http.NewRequest(req.Method, url, reader)
+	redirectReq.Header = req.Header
+
 	// TODO: add some day a timeout
 	client := &http.Client{}
 	return client.Do(redirectReq)
