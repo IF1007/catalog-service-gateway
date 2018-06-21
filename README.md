@@ -12,7 +12,7 @@ Gateway of [catalog service](https://github.com/ahlp/catalog-service) in Golang
  - make run
 
 # Dependencies
- 
+ - https://github.com/golang/go
  - https://github.com/satori/go.uuid
  - https://github.com/globalsign/mgo
  - https://github.com/gorilla/mux
