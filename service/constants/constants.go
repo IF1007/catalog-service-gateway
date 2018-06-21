@@ -5,15 +5,17 @@ const DefaultServerPort = ":80"
 const DefaultTimeout = 10000
 
 // TODO: Get by System Var
-const MongoDBHost = "csd-gateway-db"
-const LogHost = "http://logstash:5000"
-const CrudHost = "http://csd-crud"
+const HostMongoDB = "csd-gateway-db"
+const HostLog = "http://logstash:5000"
+const HostCrud = "http://csd-crud"
+const HostSearch = "http://csd-search"
 
 // ROUTES
 const PathLogin = "/login"
 const PathRegister = "/register"
 const PathAPI = "/csd"
 const PathCrud = "/api"
+const PathSearch = "/search"
 
 // MODELS
 const AttrUserLogin = "login"

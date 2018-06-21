@@ -16,7 +16,12 @@ var routes = []SystemRoute{
 	SystemRoute{
 		PathPrefix: constants.PathCrud,
 		IsPublic:   false,
-		ServiceURL: constants.CrudHost,
+		ServiceURL: constants.HostCrud,
+	},
+	SystemRoute{
+		PathPrefix: constants.PathSearch,
+		IsPublic:   true,
+		ServiceURL: constants.HostSearch,
 	},
 }
 

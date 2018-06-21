@@ -25,7 +25,7 @@ var userCollection *mgo.Collection
 func Start() {
 	log.LogNow(constants.MessageTryConnectDB)
 	// TODO: add auth in DB
-	session, err := mgo.Dial(constants.MongoDBHost)
+	session, err := mgo.Dial(constants.HostMongoDB)
 	if err != nil {
 		log.LogNow(constants.ErrorTryingConnectDB)
 		log.LogNow(err.Error())

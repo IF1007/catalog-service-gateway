@@ -30,7 +30,7 @@ func sendLog(message string) {
 		fmt.Println(constants.ErrorSenddingLog, err)
 	}
 
-	logReq, err := http.NewRequest("POST", constants.LogHost, bytes.NewReader(logJSON))
+	logReq, err := http.NewRequest("POST", constants.HostLog, bytes.NewReader(logJSON))
 	if err != nil {
 		fmt.Println(constants.ErrorSenddingLog, err)
 	}
