@@ -1,5 +1,5 @@
 # Catalog Service Gateway
-Gateway of [catalog service](https://github.com/ahlp/catalog-service) in Golang
+Gateway of [catalog service](https://github.com/IF1007/catalog-service) in Golang
 
 # How To Build
 
